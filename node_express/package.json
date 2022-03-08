@@ -11,6 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^6.2.4"
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.2.4",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   }
 }
