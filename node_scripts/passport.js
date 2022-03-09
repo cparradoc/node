@@ -47,3 +47,18 @@ passport.use(
     }
   )
 );
+
+// Esta función usará el usuario de req.LogIn para registrar su id en la cookie de sesión
+passport.serializeUser((user, done) => {
+  return done(null, user._id);
+});
+
+// Esta función buscará un usuario dada su _id en la DB y populará req.user si existe
+passport.deserializeUser(async (userId, done) => {
+  try {
+    const existingUser = User.findById(userId);
+    return done(null, existingUser);
+  } catch (err) {
+    return done(err);
+  }
+});
