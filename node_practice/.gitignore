@@ -1,0 +1,4 @@
+# Ignore this folders when using git add
+/node_modules
+.env
+.DS_Store
