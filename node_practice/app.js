@@ -21,6 +21,21 @@ router.get('/products/:name', (req, res) => {
     res.send(products);
 });
 
+router.post('/register', (req, res, next) => {
+  // Invocamos a la autenticación de Passport
+  passport.authenticate('register', (error, user) => {
+    // Si hay un error, renderizamos de nuevo el formulario con un error
+    if (error) {
+      return res.render('register', { error: error.message });    
+    }
+
+    // Si no hay error, redijimos a los usuarios a la ruta que queramos
+    return res.redirect('/pets');
+  })(req); // ¡No te olvides de invocarlo aquí!
+});
+
+module.exports = router;
+
 
 
 app.use(passport.initialize());
