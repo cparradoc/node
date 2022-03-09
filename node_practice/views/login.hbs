@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Minsait Login</title>
+</head>
+
+<body>
+  <h1>Login</h1>
+
+  <form action="/users/login" method="POST">
+    <label for="email">
+      <p>Email</p>
+      <input type="text" name="email">
+    </label>
+
+    <label for="password">
+      <p>Password</p>
+      <input type="password" name="password">
+    </label>
+
+    <input type="submit" value="Login now!">
+
+    {{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+</body>
+
+</html>
