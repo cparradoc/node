@@ -1,8 +1,9 @@
 // Archivo seed.js
 const mongoose = require('mongoose');
 
-// Imporatmos el modelo Pet en este nuevo archivo.
+// Importamos los modelo Product y User en este nuevo archivo.
 const Product = require('./models/Product');
+const User = require('./models/User');
 
 const products = [
   {
@@ -35,4 +36,13 @@ const products = [
     price: 22.99,
     description: "SUPERHOT is the smash-hit FPS where time moves only when you move. No regenerating health bars. No conveniently placed ammo drops. It's you, alone, outnumbered and outgunned. Snatch weapons from fallen enemies to shoot, slice and dodge through a truly cinematic hurricane of slow-motion bullets.",
   },
+];
+
+const users = [
+    {
+        name: "cparradoc",
+        type: "admin",
+        password: "gamestore_1",
+        mail: "cparradoc@mail.com"
+    }
 ];
