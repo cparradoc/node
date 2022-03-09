@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Imporatmos el modelo Pet en este nuevo archivo.
-const Product = require('./models/Pet');
+const Product = require('./models/Product');
 
 const products = [
   {
