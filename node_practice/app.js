@@ -3,10 +3,17 @@ const express = require('express');
 
 const app = express();
 
+const router = express.Router();
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`Listening in http://localhost:${PORT}`);
+});
+
+router.get('/products/:name', (req, res) => {
+    const products = req.params.name;
+    res.send(products);
 });
 
 app.use(
