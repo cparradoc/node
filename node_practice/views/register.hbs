@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>User Register</title>
+</head>
+
+<body>
+  <h1>Register</h1>
+
+  <form action="/users/register" method="POST">
+    <label for="mail">
+      <p>Email</p>
+      <input type="text" name="mail">
+    </label>
+
+    <label for="password">
+      <p>Password</p>
+      <input type="password" name="password">
+    </label>
+
+    <input type="submit" value="Register now!">
+
+    {{#if error}}
+      <p style="color: red;">{{error}}</p>
+    {{/if}}
+  </form>
+</body>
+
+</html>
