@@ -10,6 +10,7 @@ const UserSchema = new Schema(
     type: {type: String, required: true},
     password: {type: String, required: true},
     mail: {type: String, required: true},
+  },
   {
     // Esta propiedad servirá para guardar las fechas de creación y actualización de los documentos
     timestamps: true,
