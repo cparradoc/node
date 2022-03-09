@@ -30,4 +30,15 @@ router.get('/pets/:id', async (req, res) => {
     }
   });
 
+  const passport = require('passport');
+require('./passport'); // Requerimos nuestro archivo de configuración
+
+// Añadimos el nuevo middleware al servidor
+server.use(passport.initialize());
+
+// En nuestro archivo index.js
+const userRouter = require('./routes/user.routes');
+
+server.use('/users', userRouter);
+
 server.use('/', router);
