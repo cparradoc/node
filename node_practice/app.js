@@ -1,6 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 
+const passport = require('passport');
+require('./passport'); // Requerimos nuestro archivo de configuración
+
+const userRouter = require('./routes/user.routes');
+
 const app = express();
 
 const router = express.Router();
@@ -15,6 +20,12 @@ router.get('/products/:name', (req, res) => {
     const products = req.params.name;
     res.send(products);
 });
+
+
+
+app.use(passport.initialize());
+
+app.use('/users', userRouter);
 
 app.use(
     session({
