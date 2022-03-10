@@ -11,8 +11,12 @@ const users = [
     }
 ];
 
+const userDocuments = users.map(users => new Product(users));
+
+const DB_URL = "";
+
 mongoose
-  .connect('mongodb://localhost:27017/upgrade_class_3', {
+  .connect(DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

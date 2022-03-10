@@ -127,7 +127,9 @@ const products = [
   },
 ];
 
+const productDocuments = products.map(products => new Product(products));
 
+const DB_URL = "";
 
 mongoose
   .connect(DB_URL, {
@@ -144,7 +146,7 @@ mongoose
   })
   .catch((err) => console.log(`Error deleting data: ${err}`))
   .then(async () => {
-    await Product.insertMany(petDocuments);
+    await Product.insertMany(productDocuments);
   })
   .catch((err) => console.log(`Error creating data: ${err}`))
   // Por último nos desconectaremos de la DB.
