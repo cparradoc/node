@@ -136,3 +136,25 @@ const users = [
         mail: "cparradoc@mail.com"
     }
 ];
+
+mongoose
+  .connect(DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(async () => {
+    // Utilizando Product.find() obtendremos un array con todos los pets de la db
+    const allProducts = await Product.find();
+    
+    // Si existen pets previamente, dropearemos la colección
+    if (allProducts.length) {
+      await Pet.collection.drop();
+    }
+  })
+  .catch((err) => console.log(`Error deleting data: ${err}`))
+  .then(async () => {
+    await Product.insertMany(petDocuments);
+  })
+  .catch((err) => console.log(`Error creating data: ${err}`))
+  // Por último nos desconectaremos de la DB.
+  .finally(() => mongoose.disconnect());
