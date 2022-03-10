@@ -51,8 +51,7 @@ passport.deserializeUser(async (userId, done) => {
   }
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 app.use('/users', userRouter);
 
@@ -67,3 +66,5 @@ app.use(
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
   );
+app.use(passport.initialize());
+app.use(passport.session());
