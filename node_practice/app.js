@@ -19,7 +19,10 @@ const userRouter = require('./routes/user.routes');
 
 const router = express.Router();
 
+const path = require('path');
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 
 router.get('/products/:name', (req, res) => {
