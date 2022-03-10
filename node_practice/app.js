@@ -5,6 +5,9 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 const passport = require('passport');
 require('./passport'); // Requerimos nuestro archivo de configuración
 
