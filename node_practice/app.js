@@ -51,9 +51,9 @@ passport.deserializeUser(async (userId, done) => {
   }
 });
 
+const authMiddleware = require('./middlewares/auth.middleware');
 
-
-app.use('/users', userRouter);
+app.use('/users', [authMiddleware.isAuthenticated], userRouter);
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
