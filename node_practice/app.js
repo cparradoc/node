@@ -56,7 +56,7 @@ passport.deserializeUser(async (userId, done) => {
 app.use('/users', userRouter);
 const mongoose = require('mongoose');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongodb-session')(session);
 
 app.use(
     session({
