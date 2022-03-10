@@ -9,6 +9,7 @@ const productSchema = new Schema(
     name: { type: String, required: true },
     price: {type: Number, required: true},
     description: {type: String, required: true},
+    image: {type: String, required: true},
   },
   {
     // Esta propiedad servirá para guardar las fechas de creación y actualización de los documentos
