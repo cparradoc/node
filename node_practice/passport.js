@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
-const User = require('./models/User');
+const User = require('./db/models/User');
 
 // Creamos los salts de bcrypt
 const saltRounds = 10;
