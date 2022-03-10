@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 
 // Importamos los modelo Product y User en este nuevo archivo.
 const Product = require('./models/Product');
-const User = require('./models/User');
 
 const products = [
   {
@@ -128,14 +127,7 @@ const products = [
   },
 ];
 
-const users = [
-    {
-        name: "cparradoc",
-        type: "admin",
-        password: "gamestore_1",
-        mail: "cparradoc@mail.com"
-    }
-];
+
 
 mongoose
   .connect(DB_URL, {
