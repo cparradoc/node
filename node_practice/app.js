@@ -1,11 +1,13 @@
 require('dotenv').config();
 const express = require('express');
+const app = express();
+
+const PORT = process.env.PORT || 3000;
 
 const passport = require('passport');
 require('./passport'); // Requerimos nuestro archivo de configuración
 
 
-const app = express();
 
 const appRoutes = require('./routes/app.routes');
 app.use('/', appRoutes);
@@ -13,11 +15,8 @@ const userRouter = require('./routes/user.routes');
 
 const router = express.Router();
 
-const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Listening in http://localhost:${PORT}`);
-});
+
 
 router.get('/products/:name', (req, res) => {
     const products = req.params.name;
@@ -74,3 +73,11 @@ app.use(
   );
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((err, req, res, next) => {
+	return res.status(err.status || 500).json(err.message || 'Unexpected error');
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening in http://localhost:${PORT}`);
+});
