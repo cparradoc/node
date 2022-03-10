@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
-const app = express();
 
 const PORT = process.env.PORT || 3000;
+const app = express();
+
 
 const passport = require('passport');
 require('./passport'); // Requerimos nuestro archivo de configuración
