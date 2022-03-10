@@ -74,6 +74,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('*', (req, res, next) => {
+  const error = new Error('Route not found'); 
+  error.status = 404;
+  next(error); // Lanzamos la función next() con un error
+});
+
 app.use((err, req, res, next) => {
 	return res.status(err.status || 500).json(err.message || 'Unexpected error');
 });
