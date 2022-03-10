@@ -135,12 +135,11 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-    // Utilizando Product.find() obtendremos un array con todos los pets de la db
     const allProducts = await Product.find();
     
     // Si existen pets previamente, dropearemos la colección
     if (allProducts.length) {
-      await Pet.collection.drop();
+      await Product.collection.drop();
     }
   })
   .catch((err) => console.log(`Error deleting data: ${err}`))
