@@ -4,9 +4,12 @@ const express = require('express');
 const passport = require('passport');
 require('./passport'); // Requerimos nuestro archivo de configuración
 
-const userRouter = require('./routes/user.routes');
 
 const app = express();
+
+const appRoutes = require('./routes/app.routes');
+app.use('/', appRoutes);
+const userRouter = require('./routes/user.routes');
 
 const router = express.Router();
 
