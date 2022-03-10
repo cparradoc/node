@@ -11,7 +11,7 @@ passport.use(
   'register', // Nombre de la estrategia, en este caso será register
   new LocalStrategy(
     {
-      usernameField: 'email', // Elegimos el campo email del req.body
+      usernameField: 'mail', // Elegimos el campo mail del req.body
       passwordField: 'password', // Elegimos el campo password del req.body
       passReqToCallback: true, // Hace que el callback reciba la Request (req)
     },
@@ -53,14 +53,14 @@ passport.use(
   'login',
   new LocalStrategy(
     {
-      usernameField: 'email',
+      usernameField: 'mail',
       passwordField: 'password',
       passReqToCallback: true,
     },
-    async (req, email, password, done) => {
+    async (req, mail, password, done) => {
       try {
         // Primero buscamos si el usuario existe en nuestra DB
-        const currentUser = await User.findOne({ email: email });
+        const currentUser = await User.findOne({ mail: mail });
 
         // Si NO existe el usuario, tendremos un error...
         if (!currentUser) {
