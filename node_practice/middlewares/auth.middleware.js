@@ -4,7 +4,7 @@ function isAuthenticated(req, res, next) {
       return next();
     } else {
       // En caso de no hacer usuarios logeados, redireccionamos a login
-      return res.redirect('/login');
+      return res.redirect('/users/login');
     }
   }
   
