@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 // Creamos el esquema de usuarios
 const UserSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String},
     type: {type: String, required: true},
     password: {type: String, required: true},
     mail: {type: String, required: true},

@@ -27,7 +27,7 @@ passport.use(
 
         // Si hay usuario previamente, lanzamos un error
         if (previousUser) {
-          const error = new Error('The user is already registered!');
+          const error = new Error('Usuario ya registrado');
           return done(error);
         }
 
@@ -72,7 +72,7 @@ passport.use(
 
         // Si NO existe el usuario, tendremos un error...
         if (!currentUser) {
-          const error = new Error('The user does not exist!');
+          const error = new Error('EL usuario no existe');
           return done(error);
         }
 
@@ -85,7 +85,7 @@ passport.use(
         // Si el password no es correcto, enviamos un error a nuestro usuario
         if (!isValidPassword) {
           const error = new Error(
-            'The email & password combination is incorrect!'
+            'Combinación de correo y contraseña inválidos'
           );
           return done(error);
         }
