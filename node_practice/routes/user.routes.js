@@ -3,6 +3,22 @@ const passport = require('passport');
 
 const router = express.Router();
 
+router.post('/logout', (req, res, next) => {
+  if (req.user) {
+    // Destruimos el objeto req.user para este usuario
+    req.logout();
+
+    req.session.destroy(() => {
+      // Eliminamos la cookie de sesión al cancelar la sesión
+      res.clearCookie('connect.sid');
+      // Redirijimos el usuario a la home
+      res.redirect('/');
+    });
+  } else {
+    return res.sendStatus('/'); // Si no hay usuario, vuelta a la pantalla principal
+  }
+});
+
 router.post('/register', (req, res, next) => {
   passport.authenticate('register', (error, user) => {
     if (error) {
