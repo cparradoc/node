@@ -14,8 +14,10 @@ require('./passport'); // Requerimos nuestro archivo de configuración
 
 
 const appRoutes = require('./routes/app.routes');
+
 app.use('/', appRoutes);
 const userRouter = require('./routes/user.routes');
+const productRouter = require('./routes/product.routes');
 
 const router = express.Router();
 
@@ -24,26 +26,6 @@ const path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
-router.get('/products/:name', (req, res) => {
-    const products = req.params.name;
-    res.send(products);
-});
-
-router.post('/register', (req, res, next) => {
-  // Invocamos a la autenticación de Passport
-  passport.authenticate('register', (error, user) => {
-    // Si hay un error, renderizamos de nuevo el formulario con un error
-    if (error) {
-      return res.render('register', { error: error.message });    
-    }
-
-    // Si no hay error, redijimos a los usuarios a la ruta que queramos
-    return res.redirect('/pets');
-  })(req); // ¡No te olvides de invocarlo aquí!
-});
-
-module.exports = router;
 
 // Esta función usará el usuario de req.LogIn para registrar su id en la cookie de sesión
 passport.serializeUser((user, done) => {
@@ -63,6 +45,7 @@ passport.deserializeUser(async (userId, done) => {
 const authMiddleware = require('./middlewares/auth.middleware');
 
 app.use('/users', [authMiddleware.isAuthenticated], userRouter);
+app.use('/products', [authMiddleware.isAuthenticated], productRouter);
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongodb-session')(session);
