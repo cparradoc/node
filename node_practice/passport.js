@@ -17,6 +17,11 @@ passport.use(
     },
     async (req, mail, password, done) => {
       try {
+
+        if (mail == null || password == null) {
+          const error = new Error('Introduzca los datos requeridos');
+          return done(error);
+        }
         // Primero buscamos si el usuario existe en nuestra DB
         const previousUser = await User.findOne({ mail: mail });
 
