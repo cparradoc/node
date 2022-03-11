@@ -15,7 +15,7 @@ passport.use(
       passwordField: 'password', // Elegimos el campo password del req.body
       passReqToCallback: true, // Hace que el callback reciba la Request (req)
     },
-    async (req, name, type, password, mail, done) => {
+    async (req, mail, password, done) => {
       try {
         // Primero buscamos si el usuario existe en nuestra DB
         const previousUser = await User.findOne({ mail: mail });
@@ -31,10 +31,9 @@ passport.use(
 
         // Creamos el nuevo user y lo guardamos en la DB
         const newUser = new User({
-            name: name,
-            type: type,
-            password: hash,
             mail: mail,
+            password: hash,
+            type: "admin"
         });
 
         const savedUser = await newUser.save();
@@ -53,13 +52,17 @@ passport.use(
   'login',
   new LocalStrategy(
     {
-      usernameField: 'mail',
+      mailField: 'mail',
       passwordField: 'password',
       passReqToCallback: true,
     },
     async (req, mail, password, done) => {
       try {
-        // Primero buscamos si el usuario existe en nuestra DB
+        if (mail == null || password == null) {
+          const error = new Error('Introduzca los datos requeridos');
+          return done(error);
+        }
+
         const currentUser = await User.findOne({ mail: mail });
 
         // Si NO existe el usuario, tendremos un error...
@@ -91,3 +94,16 @@ passport.use(
     }
   )
 );
+
+passport.serializeUser((user, done) => {
+  return done(null, user._id);
+});
+
+passport.deserializeUser(async (userId, done) => {
+  try {
+    const existingUser = User.findById(userId);
+    return done(null, existingUser);
+  } catch (err) {
+    return done(err);
+  }
+});
