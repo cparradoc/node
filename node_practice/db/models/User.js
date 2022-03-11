@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Creamos el esquema de usuarios
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
     name: { type: String},
     type: {type: String, required: true},
@@ -18,5 +18,5 @@ const UserSchema = new Schema(
 );
 
 // Creamos y exportamos el modelo User
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

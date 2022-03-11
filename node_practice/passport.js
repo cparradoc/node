@@ -38,7 +38,7 @@ passport.use(
         const newUser = new User({
             mail: mail,
             password: hash,
-            type: "admin"
+            type: "admin",
         });
 
         const savedUser = await newUser.save();
@@ -72,7 +72,7 @@ passport.use(
 
         // Si NO existe el usuario, tendremos un error...
         if (!currentUser) {
-          const error = new Error('EL usuario no existe');
+          const error = new Error('El usuario no existe');
           return done(error);
         }
 
