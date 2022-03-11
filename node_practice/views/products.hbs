@@ -9,7 +9,17 @@
 
     <a href="/">Página principal</a>
 
-    
+    <div>
+        {{#each products}}
+        <a href="/products/product/"{{this.name}}>
+            <h2>{{this.title}}</h2>
+            <h2>{{this.description}}</h2>
+            <h2>{{this.price}}</h2>
+            <h2>{{this.image}}</h2>
+        </a>
+    </div>
+
+
     
 
 </body>
