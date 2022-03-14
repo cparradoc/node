@@ -14,9 +14,9 @@ require('./passport'); // Requerimos nuestro archivo de configuración
 
 
 const session = require('express-session');
-const MongoStore = require('connect-mongodb-session')(session);
 
 if(process.env.MODE == 'dev'){
+  const MongoStore = require('connect-mongodb-session')(session);
   app.use(
     session({
       secret: 'game_store', // ¡Este secreto tendremos que cambiarlo en producción!
@@ -30,14 +30,14 @@ if(process.env.MODE == 'dev'){
       })
     })
   );
-}else{
+} else {
   var RedisStore = require('connect-redis')(session);  
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var redis = require("redis").createClient(rtg.port, rtg.hostname);
   redis.auth(rtg.auth.split(":")[1]);
 
-  server.use(session({
-    secret: process.env.SESSION_SECRET,
+  app.use(session({
+    secret: "game_store",
     resave: false,
     saveUninitialized: false,
     cookie: {
