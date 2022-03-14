@@ -4,6 +4,7 @@ require('./db/db.js');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
+console.log(process.env.DB_URL);
 
 
 app.use(express.json());

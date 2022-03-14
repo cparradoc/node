@@ -4,16 +4,16 @@ const User = require('./models/User');
 
 const users = [
     {
-        name: "cparradoc",
+        name: "admin",
         type: "admin",
-        password: "gamestore_1",
+        password: "uFUcfG2agO9CJHxI",
         mail: "cparradoc@mail.com"
     }
 ];
 
 const userDocuments = users.map(users => new Product(users));
 
-const DB_URL = "mongodb+srv://cparradoc:a@cluster0.h9fct.mongodb.net/users?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://admin:uFUcfG2agO9CJHxI@cluster0.h9fct.mongodb.net/users?retryWrites=true&w=majority";
 
 mongoose
   .connect(DB_URL, {
