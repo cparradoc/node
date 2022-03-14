@@ -13,7 +13,7 @@ const users = [
 
 const userDocuments = users.map(users => new Product(users));
 
-const DB_URL = "mongodb+srv://cparradoc:<password>@cluster0.h9fct.mongodb.net/users?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://cparradoc:a@cluster0.h9fct.mongodb.net/users?retryWrites=true&w=majority";
 
 mongoose
   .connect(DB_URL, {

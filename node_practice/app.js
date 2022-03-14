@@ -30,7 +30,7 @@ if(process.env.MODE == 'dev'){
       })
     })
   );
-} else {
+}/* else {
   var RedisStore = require('connect-redis')(session);  
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var redis = require("redis").createClient(rtg.port, rtg.hostname);
@@ -47,7 +47,7 @@ if(process.env.MODE == 'dev'){
       client: redis
     })
   }));
-}
+}*/
 
 
 app.use(passport.initialize());
