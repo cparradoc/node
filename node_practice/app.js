@@ -4,7 +4,6 @@ require('./db/db.js');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
-console.log(process.env.DB_URL);
 
 
 app.use(express.json());
@@ -31,24 +30,7 @@ if(process.env.MODE == 'dev'){
       })
     })
   );
-}/* else {
-  var RedisStore = require('connect-redis')(session);  
-  var rtg   = require("url").parse(process.env.REDISTOGO_URL);
-  var redis = require("redis").createClient(rtg.port, rtg.hostname);
-  redis.auth(rtg.auth.split(":")[1]);
-
-  app.use(session({
-    secret: "game_store",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 360000,
-    },
-    store: new RedisStore({
-      client: redis
-    })
-  }));
-}*/
+}
 
 
 app.use(passport.initialize());
