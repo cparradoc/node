@@ -3,12 +3,15 @@ const bcrypt = require('bcrypt');
 
 const User = require('./models/User');
 
+const saltRounds = 10;
+
 function hashPassword() {
+  bcrypt.hash("password", saltRounds).then(hash => {
   const users = [
       {
           name: "admin",
           type: "admin",
-          password: "uFUcfG2agO9CJHxI",
+          password: hash,
           mail: "cparradoc@mail.com"
       }
   ];
@@ -39,6 +42,7 @@ function hashPassword() {
     .catch((err) => console.log(`Error creating data: ${err}`))
     // Por último nos desconectaremos de la DB.
     .finally(() => mongoose.disconnect());
-  }
+  });
+}
 
   hashPassword();
