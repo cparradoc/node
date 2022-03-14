@@ -41,6 +41,7 @@ const path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
 const authMiddleware = require('./middlewares/auth.middleware');
 
 const appRoutes = require('./routes/app.routes');
@@ -49,7 +50,6 @@ const userRouter = require('./routes/user.routes');
 app.use('/users', [authMiddleware.isAuthenticated], userRouter);
 const productRouter = require('./routes/product.routes');
 app.use('/products', [authMiddleware.isAuthenticated], productRouter);
-
 
 
 
