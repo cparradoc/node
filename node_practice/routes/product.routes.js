@@ -76,7 +76,15 @@ router.post('/filter', async (req, res) => {
 
 router.get('/cart', async (req, res) => {
   try {
+    const UserCart = await User.findById(req.session.passport.user).populate('cart');
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
 
+router.post('/cart', async (req, res) => {
+  try {
+    return res.status(200).redirect('/products/cart');
   } catch (err) {
     return res.status(500).json(err);
   }
