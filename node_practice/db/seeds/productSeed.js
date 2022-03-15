@@ -1,7 +1,7 @@
 // Archivo seed.js
 const mongoose = require('mongoose');
 
-// Importamos los modelo Product y User en este nuevo archivo.
+// Importamos los modelo Product en este nuevo archivo.
 const Product = require('./models/Product');
 
 const products = [
