@@ -38,4 +38,13 @@ router.post('/search', async (req, res) => {
   }
 });
 
-  module.exports = router;
+router.post('/filter', async (req, res) => {
+
+  try {
+
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+module.exports = router;
