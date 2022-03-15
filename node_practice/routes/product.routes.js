@@ -24,10 +24,13 @@ router.get('/next/:n', async (req, res) => {
     const current = Number(req.params.n);
     const next = String(current + productLimit);
     const previous = String(current - productLimit);
-
-    const products = await Product.find().sort({createdAt: 'descending'}).skip(current).limit(productLimit);
-    if(products.length > 0) {
-      return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});
+    if (current >= 0){
+      const products = await Product.find().sort({createdAt: 'descending'}).skip(current).limit(productLimit);
+      if(products.length > 0 || previous >= 0) {
+        return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});
+      }
+    }else {
+      res.redirect('/products');
     }
   } catch(err) {
     res.status(500).json(err);
