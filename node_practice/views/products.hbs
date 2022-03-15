@@ -9,10 +9,18 @@
 
         <a href="/">Página principal</a>
 
+        <form action="/products/search/" method="POST">
+            <label for="name">
+                <p>Nombre del juego: </p>
+                <input type="text" name="name">
+            </label>
+            <input type="submit" value="Buscar">
+        </form>
+
         <div>
             {{#each products}}
             <a href="/products/product/{{this.id}}">
-                <h2>{{this.title}}</h2>
+                <h2>{{this.name}}</h2>
                 <h3>{{this.description}}</h3>
                 <h3>{{this.price}}</h3>
                 <h3>{{this.image}}</h3>

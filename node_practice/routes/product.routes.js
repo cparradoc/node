@@ -25,4 +25,8 @@ router.get('/product/:id', async (req, res) => {
   }
 });
 
+router.post('/search', async (req, res) => {
+  
+});
+
   module.exports = router;
