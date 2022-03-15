@@ -17,6 +17,18 @@
             <input type="submit" value="Buscar">
         </form>
 
+        <form action="/products/filter/" method="POST">
+            <label for="min">
+                <p>Precio mínimo: </p>
+                <input type="text" name="min">
+            </label>
+            <label for="max">
+                <p>Precio máximo: </p>
+                <input type="text" name="max">
+            </label>
+            <input type="submit" value="Filtrar">
+        </form>
+
         <div>
             {{#each products}}
             <a href="/products/product/{{this.id}}">

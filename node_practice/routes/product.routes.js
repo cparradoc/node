@@ -8,7 +8,7 @@ const productLimit = 10;
 
 router.get('/', async (req, res) => {
     try {
-      const products = await Product.find().limit(productLimit);
+      const products = await Product.find().sort({createdAt: 'descending'}).limit(productLimit);
       return res.status(200).render('products', { title: 'Game Store', products });  
     } catch (err) {
       next(err);
@@ -23,7 +23,7 @@ router.get('/product/:id', async (req, res) => {
       return res.status(200).render('product', {title: "Game Store", id: id, product: product});
     }
   } catch (err) {
-    return res.status(500).render('product', {title: "Game Store"});
+    return res.status(500).json(err);
   }
 });
 
@@ -40,8 +40,12 @@ router.post('/search', async (req, res) => {
 
 router.post('/filter', async (req, res) => {
 
-  try {
+  const max = req.body.max;
+  const min = req.body.min;
 
+  try {
+    const products = await Product.find({'price': {$gte: min}, 'price' : {$lte: max}}).sort({createdAt: 'descending'});
+    return res.status(200).render('products', {title: "Game Store", products: products});
   } catch (err) {
     return res.status(500).json(err);
   }
