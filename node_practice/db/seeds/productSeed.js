@@ -129,7 +129,7 @@ const products = [
 
 const productDocuments = products.map(products => new Product(products));
 
-const DB_URL = "mongodb+srv://admin:uFUcfG2agO9CJHxI@cluster0.h9fct.mongodb.net/products?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://admin:uFUcfG2agO9CJHxI@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
 
 mongoose
   .connect(DB_URL, {
