@@ -8,15 +8,15 @@ const saltRounds = 10;
 function hashPassword() {
   bcrypt.hash("password", saltRounds).then(hash => {
   const users = [
-      {
-          name: "admin",
-          type: "admin",
-          password: hash,
-          mail: "cparradoc@mail.com"
-      }
+    {
+      name: "admin",
+      type: "admin",
+      password: hash,
+      mail: "cparradoc@mail.com"
+    }
   ];
 
-  const userDocuments = users.map(users => new Product(users));
+  const userDocuments = users.map(users => new User(users));
 
   const DB_URL = "mongodb+srv://admin:uFUcfG2agO9CJHxI@cluster0.h9fct.mongodb.net/users?retryWrites=true&w=majority";
 
