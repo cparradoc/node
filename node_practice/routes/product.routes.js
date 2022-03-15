@@ -73,4 +73,12 @@ router.post('/filter', async (req, res) => {
   }
 });
 
+router.get('/cart', async (req, res) => {
+  try {
+
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
 module.exports = router;
