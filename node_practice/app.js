@@ -49,7 +49,7 @@ app.use('/', appRoutes);
 const userRouter = require('./routes/user.routes');
 app.use('/users', [authMiddleware.isAuthenticated], userRouter);
 const productRouter = require('./routes/product.routes');
-app.use('/products', [authMiddleware.isAuthenticated], productRouter);
+app.use('/products', /*[authMiddleware.isAuthenticated],*/ productRouter);
 
 
 
