@@ -40,6 +40,13 @@
             {{/each}}
         </div>
 
+        {{#if previous}}
+            <a href="/products/next/{{previous}}">Página anterior</a>
+        {{/if}}
+        {{#if next}}
+            <a href="/products/next/{{next}}">Página siguiente</a>
+        {{/if}}
+
     </body>
 
 </html>

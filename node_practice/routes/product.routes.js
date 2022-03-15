@@ -8,11 +8,28 @@ const productLimit = 10;
 
 router.get('/', async (req, res) => {
     try {
+      const current = 0;
+      const next = current + productLimit;
+      const previous = current - productLimit;
+
       const products = await Product.find().sort({createdAt: 'descending'}).limit(productLimit);
-      return res.status(200).render('products', { title: 'Game Store', products });  
+      return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});  
     } catch (err) {
       next(err);
     }
+});
+
+router.get('/next/:n', async (req, res) => {
+  try {
+    const current = Number(req.params.n);
+    const next = current + productLimit;
+    const previous = current - productLimit;
+
+    const products = await Product.find().sort({createdAt: 'descending'}).current(current).limit(productLimit);
+    return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});
+  } catch(err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/product/:id', async (req, res) => {
