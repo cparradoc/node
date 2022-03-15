@@ -4,6 +4,8 @@ const Product = require('../db/models/Product');
 
 const router = express.Router();
 
+const productLimit = 10;
+
 router.get('/', async (req, res) => {
     try {
       const products = await Product.find();
