@@ -26,7 +26,14 @@ router.get('/product/:id', async (req, res) => {
 });
 
 router.post('/search', async (req, res) => {
-  
+  const search = req.body.name;
+  try {
+    //usamos el string de busqueda como patron a encontrar
+    const products = await Product.find({'name': { $regex: search, $options: 'i'}}).sort({createdAt: 'descending'});
+    return res.status(200).render('products', {title: "Game Store", products: products});
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
   module.exports = router;
