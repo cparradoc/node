@@ -17,6 +17,11 @@
             {{/if}}
         {{/if}}
 
+        <form action="/products/cart" method="POST">
+            <input type="hidden" name="id" value="{{this.id}}">
+            <input type="submit" value="Añadir juego al carrito">
+        </form>
+
     </body>
 
 </html>
