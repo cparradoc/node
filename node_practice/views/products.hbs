@@ -11,8 +11,8 @@
 
         <div>
             {{#each products}}
-            <a href="/products/product/"{{this.name}}>
-                <h3>{{this.title}}</h3>
+            <a href="/products/product/{{this.id}}">
+                <h2>{{this.title}}</h2>
                 <h3>{{this.description}}</h3>
                 <h3>{{this.price}}</h3>
                 <h3>{{this.image}}</h3>
