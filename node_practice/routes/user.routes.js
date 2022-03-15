@@ -15,7 +15,7 @@ router.post('/logout', (req, res, next) => {
       res.redirect('/');
     });
   } else {
-    return res.sendStatus('/'); // Si no hay usuario, vuelta a la pantalla principal
+    return res.redirect('/'); // Si no hay usuario, vuelta a la pantalla principal
   }
 });
 
