@@ -33,9 +33,10 @@
             {{#each products}}
             <a href="/products/product/{{this.id}}">
                 <h2>{{this.name}}</h2>
-                <h3>{{this.description}}</h3>
                 <h3>{{this.price}}€</h3>
-                <h3>{{this.image}}</h3>
+                {{#if this.image}}
+                    <img src="{{this.image}}" alt="{{this.name}}" width="300px"></img>
+                {{/if}}
             </a>
             {{/each}}
         </div>
