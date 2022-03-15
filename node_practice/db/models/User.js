@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 // Creamos el esquema de usuarios
 const userSchema = new Schema(
   {
-    name: { type: String},
     type: {type: String, required: true},
     password: {type: String, required: true},
     mail: {type: String, required: true},
+    cart: [{ type: Schema.Types.ObjectId, ref: 'Product'}]
   },
   {
     // Esta propiedad servirá para guardar las fechas de creación y actualización de los documentos

@@ -9,7 +9,6 @@ function hashPassword() {
   bcrypt.hash("password", saltRounds).then(hash => {
   const users = [
     {
-      name: "admin",
       type: "admin",
       password: hash,
       mail: "cparradoc@mail.com"
