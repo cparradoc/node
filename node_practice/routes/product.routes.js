@@ -8,7 +8,7 @@ const productLimit = 10;
 
 router.get('/', async (req, res) => {
     try {
-      const products = await Product.find();
+      const products = await Product.find().limit(productLimit);
       return res.status(200).render('products', { title: 'Game Store', products });  
     } catch (err) {
       next(err);
