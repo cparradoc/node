@@ -15,7 +15,7 @@ function isAuthenticated(req, res, next) {
     if(user.type == "admin") {
       return next();
     } else {
-      return res.redirect('/products');
+      return res.redirect('.');
     }
 
   }
