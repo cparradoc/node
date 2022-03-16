@@ -14,15 +14,15 @@
         {{#if products}}
             {{#each products}}
                 <h2>{{this.name}}</h2>
-                <h3>{{this.price}}</h3>
+                <h3>{{this.price}} €</h3>
             {{/each}}
 
             <h3>Precio a pagar: {{this.total}} €</h3>
             
-            <form action="/products/cart" method="DELETE">
-                <input type="submit" value="Pagar">
-            </form>
         {{/if}}
+
+        <a href="/products/{{this.id}}"><button>Pagar</button></a>
+        <p>{{user.id}}</p>
     </body>
 
 </html>

@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const User = require('../db/models/User');
 
 const router = express.Router();
 
@@ -53,6 +54,32 @@ router.post('/login', (req, res, next) => {
       return res.redirect('/products');
     });
   })(req, res, next);
+});
+
+router.get('/cart', async (req, res) => {
+  const userCart = await User.findById(req.session.passport.user).populate('cart');
+  if(userCart.cart.length > 0) {
+    let total = 0;
+    for (var i = 0; i < userCart.cart.length; i++) {
+      total += userCart.cart[i].price
+    }
+    return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
+  }else {
+    return res.status(200).render('cart', { title: "Game Store", products: userCart.cart });
+  }
+});
+
+router.post('/cart', async (req, res) => {
+  const id = req.body.id;
+  try {
+    const userCart = await User.findById(req.session.passport.user).populate('cart');
+    userCart.cart.push(id);
+    await userCart.save();
+    return res.status(200).redirect('/users/cart');
+
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
 module.exports = router;

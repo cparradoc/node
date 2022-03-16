@@ -77,35 +77,11 @@ router.post('/filter', async (req, res) => {
   }
 });
 
-router.get('/cart', async (req, res) => {
-  const userCart = await User.findById(req.session.passport.user).populate('cart');
-  if(userCart.cart.length > 0) {
-    let total = 0;
-    for (var i = 0; i < userCart.cart.length; i++) {
-      total += userCart.cart[i].price
-    }
-    return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
-  }else {
-    return res.status(200).render('cart', { title: "Game Store", products: userCart.cart });
-  }
-});
 
-router.post('/cart', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   const id = req.body.id;
   try {
-    const userCart = await User.findById(req.session.passport.user).populate('cart');
-    userCart.cart.push(id);
-    await userCart.save();
-    return res.status(200).redirect('/products/cart');
-
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-});
-
-router.delete('/cart', async (req, res) => {
-  try {
-    const userCart = await User.findById(req.session.passport.user).populate('cart');
+    const userCart = await User.findById(id);
     userCart.cart = [];
     await userCart.save();
     return res.status(200).redirect('/products/cart');

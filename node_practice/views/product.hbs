@@ -15,20 +15,17 @@
             {{#if this.product.image}}
                     <img src="{{this.product.image}}" alt="{{this.product.name}}" width="1000px"></img>
             {{/if}}
-        {{/if}}
+            
 
-        <form action="/products/cart" method="POST">
-            <input type="hidden" name="id" value="{{this.id}}">
+        <form action="/users/cart" method="POST">
+            <input type="hidden" name="id" value="{{this.product.id}}">
             <input type="submit" value="Añadir juego al carrito">
         </form>
+        {{/if}}
 
         <h3>Modificar imagen</h3>
         <form action="products/create" method="POST" enctype="multipart/form-data">
-            <label for="image">
-                <p>Imagen nueva: </p>
-                <input type="file" name="image" accept="image/png, image/jpeg">
-            </label>
-            <input type="submit" value="Insertar nueva imagen">
+            <input type="submit" value="Crear juego nuevo">
         </form>
 
     </body>
