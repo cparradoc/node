@@ -10,7 +10,7 @@ function isAuthenticated(req, res, next) {
     }
   }
 
-  function isAdmin(req, res, next) {
+  async function isAdmin(req, res, next) {
     const user = await User.findById(req.session.passport.user);
     if(user.type == "admin") {
       return next();
