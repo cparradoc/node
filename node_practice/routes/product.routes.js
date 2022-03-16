@@ -77,6 +77,13 @@ router.post('/filter', async (req, res) => {
 router.get('/cart', async (req, res) => {
   try {
     const UserCart = await User.findById(req.session.passport.user).populate('cart');
+    if(UserCart.cart.length > 0) {
+      let total = 0;
+      UserCart.cart.array.forEach(product => {
+        total +=product.price;
+      });
+      return res.status(200).render('cart', {title: "Game Store", products: UserCart.cart, total: total});
+    }
   } catch (err) {
     return res.status(500).json(err);
   }
