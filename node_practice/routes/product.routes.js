@@ -1,6 +1,9 @@
 const express = require('express');
+const { urlToHttpOptions } = require('url');
 const Product = require('../db/models/Product');
 const User = require('../db/models/User');
+const { uploadToCloudinary } = require('../middlewares/file.middleware');
+const fileMiddleware = require('../middlewares/file.middleware');
 
 
 const router = express.Router();
@@ -114,5 +117,27 @@ router.delete('/cart', async (req, res) => {
     return res.status(500).json(err);
   }
 });
+
+router.post( '/create', 
+[fileMiddleware.upload.single('picture'), uploadToCloudinary],
+async(req, res, next) => {
+  const picture = req.file_url || urlToHttpOptions;
+
+    try {
+
+      const newProduct = new Product({
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        picture: picture,
+      });
+
+      await newProduct.save();
+      return res.redirect('/products');
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 module.exports = router;
