@@ -1,3 +1,4 @@
+require('dotenv').config({path:__dirname+'/./../../.env'});
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -17,7 +18,7 @@ function hashPassword() {
 
   const userDocuments = users.map(users => new User(users));
 
-  const DB_URL = "mongodb+srv://admin:Aa0qSCp9IHAEWzfp@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
+  const DB_URL = "mongodb+srv://"+process.env.user+":"+process.env.pass+"@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
 
   mongoose
     .connect(DB_URL, {

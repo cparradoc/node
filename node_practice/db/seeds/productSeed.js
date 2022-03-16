@@ -1,3 +1,4 @@
+require('dotenv').config({path:__dirname+'/./../../.env'});
 // Archivo seed.js
 const mongoose = require('mongoose');
 
@@ -128,8 +129,7 @@ const products = [
 ];
 
 const productDocuments = products.map(products => new Product(products));
-
-const DB_URL = "mongodb+srv://admin:Aa0qSCp9IHAEWzfp@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
+const DB_URL = "mongodb+srv://"+process.env.user+":"+process.env.pass+"@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
 
 mongoose
   .connect(DB_URL, {
