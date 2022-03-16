@@ -17,7 +17,7 @@ function hashPassword() {
 
   const userDocuments = users.map(users => new User(users));
 
-  const DB_URL = "mongodb+srv://admin:uFUcfG2agO9CJHxI@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
+  const DB_URL = "mongodb+srv://admin:Aa0qSCp9IHAEWzfp@cluster0.h9fct.mongodb.net/game_store?retryWrites=true&w=majority";
 
   mongoose
     .connect(DB_URL, {
