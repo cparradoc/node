@@ -57,7 +57,7 @@ passport.use(
   'login',
   new LocalStrategy(
     {
-      mailField: 'mail',
+      usernameField: 'mail',
       passwordField: 'password',
       passReqToCallback: true,
     },
