@@ -83,7 +83,11 @@ router.get('/cart', async (req, res) => {
 });
 
 router.post('/cart', async (req, res) => {
+  const id = req.body.id;
   try {
+    const UserCart = await User.findById(req.session.passport.user).populate('cart');
+    UserCart.cart.push(id);
+    await UserCart.save();
     return res.status(200).redirect('/products/cart');
   } catch (err) {
     return res.status(500).json(err);
