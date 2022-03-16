@@ -101,4 +101,13 @@ router.post('/cart', async (req, res) => {
   }
 });
 
+router.delete('/cart', async (req, res) => {
+
+  try {
+
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
 module.exports = router;
