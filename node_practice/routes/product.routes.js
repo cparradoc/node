@@ -106,10 +106,9 @@ router.post('/cart', async (req, res) => {
 });
 
 router.delete('/cart', async (req, res) => {
-  const id = rew.body.id;
   try {
     const UserCart = await User.findById(req.session.passport.user).populate('cart');
-    UserCart.cart.remove(id);
+    UserCart.cart = [];
     await UserCart.save();
     return res.status(200).redirect('/products/cart');
 
