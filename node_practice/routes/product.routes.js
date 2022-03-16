@@ -96,7 +96,7 @@ router.post('/cart', async (req, res) => {
     UserCart.cart.push(id);
     await UserCart.save();
     return res.status(200).redirect('/products/cart');
-    
+
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -105,7 +105,7 @@ router.post('/cart', async (req, res) => {
 router.delete('/cart', async (req, res) => {
   const id = rew.body.id;
   try {
-    const UserCart = await User.findById(req.session.passport.user);
+    const UserCart = await User.findById(req.session.passport.user).populate('cart');
     UserCart.cart.remove(id);
     await UserCart.save();
     return res.status(200).redirect('/products/cart');
