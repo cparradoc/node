@@ -11,8 +11,8 @@
         <a href="/">Página principal</a>
         <a href="/products">Catálogo de juegos</a>
 
-        {{#if products}}
-            {{#each products}}
+        {{#if user}}
+            {{#each user.cart}}
                 <h2>{{this.name}}</h2>
                 <h3>{{this.price}} €</h3>
             {{/each}}
@@ -21,8 +21,11 @@
             
         {{/if}}
 
-        <a href="/products/{{this.id}}"><button>Pagar</button></a>
-        <p>{{user.id}}</p>
+        <form action="/users/{{user.id}}?_method=delete" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Pagar"></input>
+        </form>
+        <a href="/users/{{user.id}}"><button>Pagar</button></a>
     </body>
 
 </html>

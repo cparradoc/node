@@ -78,19 +78,6 @@ router.post('/filter', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
-  const id = req.body.id;
-  try {
-    const userCart = await User.findById(id);
-    userCart.cart = [];
-    await userCart.save();
-    return res.status(200).redirect('/products/cart');
-
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-});
-
 router.post('/create', 
 [fileMiddleware.upload.single('image'), uploadToCloudinary],
 async(req, res, next) => {

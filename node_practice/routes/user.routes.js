@@ -63,9 +63,9 @@ router.get('/cart', async (req, res) => {
     for (var i = 0; i < userCart.cart.length; i++) {
       total += userCart.cart[i].price
     }
-    return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
+    return res.status(200).render('cart', {title: "Game Store", user: userCart, total: total});
   }else {
-    return res.status(200).render('cart', { title: "Game Store", products: userCart.cart });
+    return res.status(200).render('cart', { title: "Game Store", user: userCart });
   }
 });
 
@@ -76,6 +76,20 @@ router.post('/cart', async (req, res) => {
     userCart.cart.push(id);
     await userCart.save();
     return res.status(200).redirect('/users/cart');
+
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+router.delete('/:id', async (req, res) => {
+  const id = req.body.id;
+  try {
+    const userCart = await User.findById(id);
+    console.log("entra");
+    userCart.cart = [];
+    await userCart.save();
+    return res.status(200).redirect('/products/cart');
 
   } catch (err) {
     return res.status(500).json(err);
