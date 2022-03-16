@@ -118,7 +118,7 @@ router.delete('/cart', async (req, res) => {
 });
 
 router.post('/create', 
-[fileMiddleware.upload.single('picture'), uploadToCloudinary],
+[fileMiddleware.upload.single('image'), uploadToCloudinary],
 async(req, res, next) => {
   const picture = req.file_url || urlToHttpOptions;
 
