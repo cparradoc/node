@@ -21,10 +21,10 @@
             
         {{/if}}
 
-        <form action="/users/{{user.id}}/cart/" method="DELETE">
+        <form action="/users/{{user.id}}/cart?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
             <input type="submit" value="Pagar"></input>
         </form>
-        <a href="/users/{{user.id}}"><button>Pagar</button></a>
+        <a href="/users/{{user.id}}/cart"><button>Pagar</button></a>
     </body>
-
 </html>
