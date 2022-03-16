@@ -82,8 +82,8 @@ router.post('/cart', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
-  const id = req.body.id;
+router.delete('/:id/cart', async (req, res) => {
+  const id = req.params.id;
   try {
     const userCart = await User.findById(id);
     console.log("entra");
