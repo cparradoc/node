@@ -15,8 +15,10 @@
             {{/each}}
 
             <h3>Precio a pagar: {{this.total}}</h3>
-            <button>Pagar</button>
             
+            <form action="/products/cart" method="DELETE">
+                <input type="submit" value="Pagar">
+            </form>
         {{/if}}
     </body>
 
