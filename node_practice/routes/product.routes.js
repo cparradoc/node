@@ -78,17 +78,15 @@ router.post('/filter', async (req, res) => {
 });
 
 router.get('/cart', async (req, res) => {
-  try {
-    const userCart = await User.findById(req.session.passport.user).populate('cart');
-    if(userCart.cart.length > 0) {
-      let total = 0;
-      userCart.cart.array.forEach(product => {
-        total +=product.price;
-      });
-      return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
+  const userCart = await User.findById(req.session.passport.user).populate('cart');
+  if(userCart.cart.length > 0) {
+    let total = 0;
+    for (var i = 0; i < userCart.cart.length; i++) {
+      total += userCart.cart[i].price
     }
-  } catch (err) {
-    return res.status(500).json(err);
+    return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
+  }else {
+    return res.status(200).render('cart', { title: "Game Store", products: userCart.cart });
   }
 });
 
