@@ -79,13 +79,13 @@ router.post('/filter', async (req, res) => {
 
 router.get('/cart', async (req, res) => {
   try {
-    const UserCart = await User.findById(req.session.passport.user).populate('cart');
-    if(UserCart.cart.length > 0) {
+    const userCart = await User.findById(req.session.passport.user).populate('cart');
+    if(userCart.cart.length > 0) {
       let total = 0;
-      UserCart.cart.array.forEach(product => {
+      userCart.cart.array.forEach(product => {
         total +=product.price;
       });
-      return res.status(200).render('cart', {title: "Game Store", products: UserCart.cart, total: total});
+      return res.status(200).render('cart', {title: "Game Store", products: userCart.cart, total: total});
     }
   } catch (err) {
     return res.status(500).json(err);
@@ -95,9 +95,9 @@ router.get('/cart', async (req, res) => {
 router.post('/cart', async (req, res) => {
   const id = req.body.id;
   try {
-    const UserCart = await User.findById(req.session.passport.user).populate('cart');
-    UserCart.cart.push(id);
-    await UserCart.save();
+    const userCart = await User.findById(req.session.passport.user).populate('cart');
+    userCart.cart.push(id);
+    await userCart.save();
     return res.status(200).redirect('/products/cart');
 
   } catch (err) {
@@ -107,9 +107,9 @@ router.post('/cart', async (req, res) => {
 
 router.delete('/cart', async (req, res) => {
   try {
-    const UserCart = await User.findById(req.session.passport.user).populate('cart');
-    UserCart.cart = [];
-    await UserCart.save();
+    const userCart = await User.findById(req.session.passport.user).populate('cart');
+    userCart.cart = [];
+    await userCart.save();
     return res.status(200).redirect('/products/cart');
 
   } catch (err) {
