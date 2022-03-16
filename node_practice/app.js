@@ -15,23 +15,22 @@ require('./passport'); // Requerimos nuestro archivo de configuración
 
 const session = require('express-session');
 
-if(process.env.MODE == 'dev'){
-  const MongoStore = require('connect-mongodb-session')(session);
-  app.use(
-    session({
-      secret: 'game_store', // ¡Este secreto tendremos que cambiarlo en producción!
-      resave: false, // Solo guardará la sesión si hay cambios en ella.
-      saveUninitialized: false, // Lo usaremos como false debido a que gestionamos nuestra sesión con Passport
-      cookie: {
-        maxAge: 3600000, // Milisegundos de duración de nuestra cookie, en este caso será una hora.
-      },
-      store: new MongoStore({
-        url: process.env.DB_URL
+
+const MongoStore = require('connect-mongodb-session')(session);
+app.use(
+  session({
+    secret: 'game_store', // ¡Este secreto tendremos que cambiarlo en producción!
+    resave: false, // Solo guardará la sesión si hay cambios en ella.
+    saveUninitialized: false, // Lo usaremos como false debido a que gestionamos nuestra sesión con Passport
+    cookie: {
+      maxAge: 3600000, // Milisegundos de duración de nuestra cookie, en este caso será una hora.
+    },
+    store: new MongoStore({
+      url: process.env.DB_URL
         
-      })
     })
-  );
-}
+  })
+);
 
 
 app.use(passport.initialize());
