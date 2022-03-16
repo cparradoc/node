@@ -129,7 +129,7 @@ async(req, res, next) => {
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
-        picture: picture,
+        image: picture,
       });
 
       await newProduct.save();
