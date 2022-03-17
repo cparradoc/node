@@ -34,8 +34,9 @@ router.get('/next/:n', async (req, res) => {
       console.log(products.length);
       if(products.length > 0) {
         return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});
+      }else{
+        return res.redirect("./"+previous);
       }
-      return res.redirect("./"+previous);
     }else {
       res.redirect('/products');
     }
