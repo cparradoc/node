@@ -1,5 +1,5 @@
 # Ignore this folders when using git add
 /node_modules
-/public
+/public/uploads
 .env
 .DS_Store
