@@ -3,13 +3,17 @@
 
     <head>
         <title>{{ title }}</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/shared.css">
     </head>
 
     <body>
-        <h1>Mi carrito</h1>
+        <h1 class="title">Mi carrito</h1>
 
-        <a href="/">Página principal</a>
-        <a href="/products">Catálogo de juegos</a>
+        
+        <div class="nav">
+            <a href="/">Página principal</a>
+            <a href="/products">Catálogo de juegos</a>
+        </div>
 
         {{#if user}}
             {{#each user.cart}}
