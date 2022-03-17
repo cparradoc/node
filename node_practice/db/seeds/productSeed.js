@@ -138,7 +138,7 @@ mongoose
   })
   .then(async () => {
     const allProducts = await Product.find();
-    // Si existen pets previamente, dropearemos la colección
+    // Si existen productos previamente, dropearemos la colección
     if (allProducts.length) {
       await Product.collection.drop();
     }

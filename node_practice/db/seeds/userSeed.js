@@ -26,17 +26,17 @@ function hashPassword() {
       useUnifiedTopology: true,
     })
     .then(async () => {
-      // Utilizando Pet.find() obtendremos un array con todos los pets de la db
+      // Utilizando User.find() obtendremos un array con todos los usuarios de la db
       const allUsers = await User.find();
       
-      // Si existen pets previamente, dropearemos la colección
+      // Si existen usuarios previamente, dropearemos la colección
       if (allUsers.length) {
         await User.collection.drop();
       }
     })
     .catch((err) => console.log(`Error deleting data: ${err}`))
     .then(async () => {
-      // para llenar nuestra base de datos con todas las mascotas.
+      // para llenar nuestra base de datos con todos los usuarios.
       await User.insertMany(userDocuments);
     })
     .catch((err) => console.log(`Error creating data: ${err}`))
