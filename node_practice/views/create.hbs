@@ -3,9 +3,17 @@
 
     <head>
     <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/shared.css">
     </head>
 
     <body>
+
+        <h1 class="title">Creación de juego nuevo</h1>
+
+        <div class="nav">
+            <a href="/">Página principal</a>
+        </div>
+
         <form action="/products/create" method="POST" enctype="multipart/form-data">
             <label for="name">
                 <p>Nombre del juego: </p>
