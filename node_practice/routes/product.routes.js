@@ -31,7 +31,6 @@ router.get('/next/:n', async (req, res) => {
     const previous = String(current - productLimit);
     if (current >= 0){
       const products = await Product.find().sort({createdAt: 'descending'}).skip(current).limit(productLimit);
-      console.log(products.length);
       if(products.length > 0) {
         return res.status(200).render('products', { title: 'Game Store', products: products, next: next, previous: previous});
       }else{
