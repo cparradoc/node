@@ -85,10 +85,14 @@ router.post('/cart', async (req, res) => {
 router.delete('/:id/cart', async (req, res) => {
   const id = req.params.id;
   try {
-    const userCart = await User.findById(id);
-    userCart.cart = [];
-    await userCart.save();
-    return res.status(200).redirect('/users/cart');
+    if(id == req.session.passport.user){ //comprobamos que el usuario de la sesión actual sea el usuario
+      //cuyo carrito queremos vaciar
+      const userCart = await User.findById(id);
+      userCart.cart = [];
+      await userCart.save();
+      return res.status(200).redirect('/users/cart');
+    }
+
 
   } catch (err) {
     return res.status(500).json(err);
