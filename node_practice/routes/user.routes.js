@@ -86,10 +86,9 @@ router.delete('/:id/cart', async (req, res) => {
   const id = req.params.id;
   try {
     const userCart = await User.findById(id);
-    console.log("entra");
     userCart.cart = [];
     await userCart.save();
-    return res.status(200).redirect('/products/cart');
+    return res.status(200).redirect('/users/cart');
 
   } catch (err) {
     return res.status(500).json(err);

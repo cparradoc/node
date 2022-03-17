@@ -43,6 +43,9 @@ app.set('view engine', 'hbs');
 
 const authMiddleware = require('./middlewares/auth.middleware');
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const appRoutes = require('./routes/app.routes');
 app.use('/', appRoutes);
 const userRouter = require('./routes/user.routes');
