@@ -1,3 +1,4 @@
+const cloudinary = require("cloudinary");
 require('dotenv').config();
 const express = require('express');
 require('./db/db.js');
@@ -6,6 +7,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const path = require('path');
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

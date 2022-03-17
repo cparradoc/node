@@ -4,7 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 
-const VALID_FILE_TYPES = ['image/png', 'image.jpg'];
+const VALID_FILE_TYPES = ['image/png', 'image/jpg'];
 
 const upload = multer({
     storage: multer.diskStorage({
@@ -12,7 +12,7 @@ const upload = multer({
             cb(null, Date.now() + path.extname(file.originalname));
         },
         destination: (req, file, cb) => {
-            cb(null, path.join(__dirname, '..public/uploads'));
+            cb(null, path.join(__dirname, '../public/uploads'));
         },
     }),
     fileFilter: (req, file, cb) => {

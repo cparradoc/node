@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <form action="/products/create" method="POST">
+        <form action="/products/create" method="POST" enctype="multipart/form-data">
             <label for="name">
                 <p>Nombre del juego: </p>
                 <input type="text" name="name">
@@ -21,7 +21,7 @@
             </label>
             <label for="image">
                 <p>Imagen: </p>
-                <input type="file" name="image" accept="image/png, image/jpeg">
+                <input type="file" name="image" accept="image/png, image/jpg">
             </label>
             <input type="submit" value="Crear">
         </form>
