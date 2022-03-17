@@ -6,6 +6,24 @@
     </head>
 
     <body>
-
+        <form action="/products/create" method="POST">
+            <label for="name">
+                <p>Nombre del juego: </p>
+                <input type="text" name="name">
+            </label>
+            <label for="price">
+                <p>Precio: </p>
+                <input type="number" name="price" min="0" max="300" value="0">
+            </label>
+            <label for="description">
+                <p>Descripción: </p>
+                <input type="text" name="description">
+            </label>
+            <label for="image">
+                <p>Imagen: </p>
+                <input type="file" name="image" accept="image/png, image/jpeg">
+            </label>
+            <input type="submit" value="Crear">
+        </form>
     </body>
 </html>

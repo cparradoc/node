@@ -4,6 +4,7 @@ const Product = require('../db/models/Product');
 const User = require('../db/models/User');
 const { uploadToCloudinary } = require('../middlewares/file.middleware');
 const fileMiddleware = require('../middlewares/file.middleware');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 
 const router = express.Router();
@@ -76,6 +77,11 @@ router.post('/filter', async (req, res) => {
     return res.status(500).json(err);
   }
 });
+
+router.get('/create',[authMiddleware.isAdmin], async (req, res) => {
+  return res.status(200).render('create', {title: "Game Store"});
+});
+
 
 
 router.post('/create', 
