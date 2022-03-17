@@ -3,18 +3,20 @@
 
   <head>
     <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
   </head>
 
 <body>
-  <h1>Bienvenidos al Game Hub!</h1>
-  <div>
+  <h1 class="title">Bienvenidos al Game Hub!</h1>
+  <div class="nav">
     <a href="/products">Juegos</a>
     <a href="/users/register">Registro</a>
     <a href="/users/login">Login</a>
   </div>
 
-  <form action="users/logout" method="POST">
-    <input type="submit" value="Cerrar sesión">
+
+  <form  action="users/logout" method="POST">
+    <input  type="submit" value="Cerrar sesión">
   </form>
 </body>
 
