@@ -3,13 +3,17 @@
 
     <head>
         <title>{{ title }}</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/shared.css">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/products.css">
     </head>
 
     <body>
-
-        <a href="/">Página principal</a>
-        <a href="/users/cart">Carrito</a>
-        <a href="/products/create">Crear nuevo producto</a>
+        
+        <div class="nav">
+            <a href="/">Página principal</a>
+            <a href="/users/cart">Carrito</a>
+            <a href="/products/create">Crear nuevo producto</a>
+        </div>
 
         <form action="/products/search/" method="POST">
             <label for="name">
@@ -31,7 +35,7 @@
             <input type="submit" value="Filtrar">
         </form>
 
-        <div>
+        <div class="product-list">
             {{#each products}}
             <a href="/products/product/{{this.id}}">
                 <h2>{{this.name}}</h2>
